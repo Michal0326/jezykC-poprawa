@@ -1,0 +1,130 @@
+
+int min(int *a, int *b)
+{
+    return(*a<*b) ? *a:*b;
+}
+
+
+int main()
+{
+
+
+int x = 5;
+    int y = 10;
+
+    int m=min(&x,&y);
+    printf("Mniejsza liczba to: %d\n ", m);
+}
+
+
+
+
+
+
+
+int* findSmaller(int* a, int* b) {
+    if (*a < *b) {
+        return a;
+    } else {
+        return b;
+    }
+}
+
+int main() {
+    int x = 10;
+    int y = 20;
+
+    int *smaller = findSmaller(&x, &y);
+    printf("Smaller value: %d\n", *smaller);
+
+    return 0;
+}
+
+
+
+
+
+
+#include <stdio.h>
+
+void swapIfSecondIsSmaller(int* a, int* b) {
+    if (*b < *a) {
+        int temp = *a;
+        *a = *b;
+        *b = temp;
+    }
+}
+
+int main() {
+    int x = 20;
+    int y = 10;
+
+    printf("Before swap: x = %d, y = %d\n", x, y);
+    swapIfSecondIsSmaller(&x, &y);
+    printf("After swap: x = %d, y = %d\n", x, y);
+
+    return 0;
+}
+
+
+
+
+#referencje
+#include <stdio.h>
+
+void swap(int* a, int* b) {
+    int temp = *a;
+    *a = *b;
+    *b = temp;
+}
+
+int main() {
+    int x = 10;
+    int y = 20;
+
+    printf("Before swap: x = %d, y = %d\n", x, y);
+    swap(&x, &y);
+    printf("After swap: x = %d, y = %d\n", x, y);
+
+    return 0;
+}
+
+
+
+
+
+
+
+#include <stdio.h>
+#include <stdlib.h> // dla funkcji malloc i free
+
+int* allocateInt() {
+    // Rezerwacja pamięci dla jednej zmiennej typu int
+    int *ptr = (int*) malloc(sizeof(int));
+    
+    // Sprawdzanie, czy alokacja pamięci się powiodła
+    if (ptr == NULL) {
+        printf("Błąd alokacji pamięci!\n");
+        return NULL;
+    }
+    
+    // Zwrócenie wskaźnika do zaalokowanej pamięci
+    return ptr;
+}
+
+int main() {
+    int *myInt = allocateInt();
+
+    // Sprawdzanie, czy alokacja pamięci się powiodła
+    if (myInt != NULL) {
+        // Używanie zaalokowanej pamięci
+        *myInt = 42;
+        printf("Wartość myInt: %d\n", *myInt);
+        
+        // Zwalnianie zaalokowanej pamięci
+        free(myInt);
+    }
+
+    return 0;
+}
+
