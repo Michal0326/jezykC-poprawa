@@ -1,0 +1,105 @@
+#include <stdio.h>
+
+int findLargestDivisor(int n) {
+    // Szukanie największego dzielnika mniejszego od n
+    for (int k = n - 1; k > 0; k--) {
+        if (n % k == 0) {
+            return k;
+        }
+    }
+    return -1; // Jeśli nie znaleziono dzielnika
+}
+
+int main() {
+    int n;
+    
+    // Wczytywanie liczby n
+    printf("Podaj nieujemną liczbę całkowitą n (n > 2): ");
+    scanf("%d", &n);
+    
+    // Sprawdzenie, czy n jest większe od 2
+    if (n <= 2) {
+        printf("Podana liczba musi być większa od 2!\n");
+        return 1; // Zakończenie programu z kodem błędu
+    }
+    
+    // Znalezienie i wypisanie największego dzielnika
+    int largestDivisor = findLargestDivisor(n);
+    printf("Największy dzielnik mniejszy od %d: %d\n", n, largestDivisor);
+    
+    return 0;
+}
+
+
+
+
+
+#include <stdio.h>
+
+unsigned long long factorial(int n) {
+    // Warunek bazowy: 0! = 1
+    if (n == 0) {
+        return 1;
+    } else {
+        // Warunek rekurencyjny: n! = n * (n-1)!
+        return n * factorial(n - 1);
+    }
+}
+
+int main() {
+    int n;
+    
+    // Wczytywanie liczby n
+    printf("Podaj nieujemną liczbę całkowitą n: ");
+    scanf("%d", &n);
+    
+    // Sprawdzenie, czy n jest nieujemne
+    if (n < 0) {
+        printf("Podana liczba musi być nieujemna!\n");
+        return 1; // Zakończenie programu z kodem błędu
+    }
+    
+    // Wywołanie funkcji factorial i wypisanie wyniku
+    printf("%d! = %llu\n", n, factorial(n));
+    
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+#include <stdio.h>
+
+int sequence(int n) {
+    // Warunek bazowy: a0 = a1 = 1
+    if (n == 0 || n == 1) {
+        return 1;
+    } else {
+        // Warunek rekurencyjny: an = an−1 + 2 ∗ an−2 + 3 dla n > 1
+        return sequence(n - 1) + 2 * sequence(n - 2) + 3;
+    }
+}
+
+int main() {
+    int n;
+    
+    // Wczytywanie liczby n
+    printf("Podaj nieujemną liczbę całkowitą n: ");
+    scanf("%d", &n);
+    
+    // Sprawdzenie, czy n jest nieujemne
+    if (n < 0) {
+        printf("Podana liczba musi być nieujemna!\n");
+        return 1; // Zakończenie programu z kodem błędu
+    }
+    
+    // Wywołanie funkcji sequence i wypisanie wyniku
+    printf("Wartość elementu o indeksie %d w ciągu: %d\n", n, sequence(n));
+    
+    return 0;
+}
