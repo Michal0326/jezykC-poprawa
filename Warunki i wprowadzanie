@@ -1,0 +1,133 @@
+ printf("Hello World!\n");
+    printf("Bardzo\ndlugi\nnapis\n");
+    printf("Napis zawierajacy rozne dziwne znaczki // \\\\ $ & %%\n");
+
+    int a;
+    printf("Podaj liczbe calkowita: ");
+    scanf("%d", &a);
+    printf("%d", a);
+
+    float b;
+    printf("\nPodaj liczbe wymierna: ");
+    scanf("%f", &b);
+    printf("%f", b);
+
+    int c,d,e;
+    printf("\nPodaj trzy liczby calkowite: ");
+    scanf("%d%d%d", &c,&d,&e);
+    printf("%d\n%d\n%d", c,d,e);
+
+    int f;
+    printf("\nPodaj liczbe calkowita: ");
+    scanf("%d", &f);
+    printf("%d", f+1);
+
+    int g,h,i;
+    printf("\nPodaj trzy liczby calkowite: ");
+    scanf("%d%d%d", &g,&h,&i);
+    printf("%f", (g+h+i)/3.0);
+
+    int unsigned j;
+    printf("\nPodaj nieujemna liczbe calkowita: ");
+    scanf("%d", &j);
+    printf("%f", sqrt(j));
+
+    float k;
+    printf("\nPodaj liczbe wymierna: ");
+    scanf("%f", &k);
+    if (k<0)
+            printf("%f", k*(-1));
+    else
+            printf("%f", k);
+
+
+    float l;
+    printf("\nPodaj liczbe wymierna: ");
+    scanf("%f", &l);
+    printf("%.2f", l);
+
+    float m;
+    printf("\nPodaj liczbe wymierna: ");
+    scanf("%f", &m);
+    printf("%e", m);
+
+
+
+    //Warunki
+
+
+
+    int n;
+    printf("Podaj liczbe calkowita: ");
+    scanf("%d", &n);
+    if (n<0)
+        printf("%d", n*(-1));
+    else
+    printf("%d", n );
+
+    int o, p;
+    printf("\nPodaj dwie liczby calkowite: ");
+    scanf("%d%d", &o,&p);
+    if (o>p)
+        printf("%d",o);
+    else if (p>o)
+        printf("%d", p);
+    else
+        printf("%d", o);
+
+    int r, s, t;
+    printf("\nPodaj trzy liczby calkowite: ");
+    scanf("%d%d%d", &r,&s,&t);
+    if (r>s && r>t)
+        printf("%d",r);
+    else if (s>r && s>t)
+        printf("%d", s);
+    else if (t>r && t>s)
+        printf("%d", t);
+    else if (t==r==s)
+        printf("%d",r);
+    else if ((r==s || r==t) && ((r > (s||t))))
+        printf("%d", r);
+    else if ((s==r || s==t) && ((s > (r||t))))
+        printf("%d", s);
+    else if ((t==s || t==r) && ((t > (s||r))))
+        printf("%d", t);
+
+
+
+    int u,w;
+    printf("\nPodaj dwie liczby calkowite: ");
+    scanf("%d%d", &u,&w);
+    if (abs(u) > abs(w))
+        printf("%d",u);
+    else if (abs(u) < abs(w))
+        printf("%d",w);
+    else
+        printf("Są rowne");
+
+
+
+    int wybor_trojkat;
+    printf("Wybierz 1, jezeli podajesz podstawe i wysokosc. Podaj 2, jezeli podajesz wszystkie boki: ");
+    scanf("%d", &wybor_trojkat);
+    int bok_t, wysokosc_t, bok_p, bok_d, bok_trz;
+    float pole_t_bowy, pole_t_wszybo, polowa_obwod;
+    if (wybor_trojkat==1)
+    {
+        printf("\nPodaj najpierw bok, potem wysokosc: ");
+        scanf("%d%d", &bok_t,&wysokosc_t);
+        pole_t_bowy = (1/2.0)*bok_t*wysokosc_t;
+        printf("Pole trojkata wynosi: ");
+        printf("%f", pole_t_bowy);
+    }
+    else if (wybor_trojkat==2)
+    {
+        printf("\nPodaj wszystkie boki trojkata: ");
+        scanf("%d%d%d", &bok_p,&bok_d,&bok_trz);
+        polowa_obwod = (bok_p+bok_d+bok_trz)/2.0;
+        pole_t_wszybo = sqrt(polowa_obwod*(polowa_obwod-bok_p)*(polowa_obwod-bok_d)*(polowa_obwod-bok_trz));
+        printf("Pole trojata wynosi: ");
+        printf("%f", pole_t_wszybo);
+    }
+    else
+        printf("Twoj wybor jest zly");
