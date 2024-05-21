@@ -1,0 +1,216 @@
+#include <stdio.h>
+#include <stdlib.h> // dla funkcji abs
+
+void modifyArray(int n, int *tab) {
+    // a) Nadaje wartość zero wszystkim elementom tablicy tab
+    for (int i = 0; i < n; i++) {
+        tab[i] = 0;
+    }
+
+    // b) Zapisuje do kolejnych elementów tablicy wartości równe ich indeksom
+    for (int i = 0; i < n; i++) {
+        tab[i] = i;
+    }
+
+    // c) Podwaja wartość wszystkich elementów w tablicy tab
+    for (int i = 0; i < n; i++) {
+        tab[i] *= 2;
+    }
+
+    // d) Do wszystkich komórek tablicy tab wstawia wartości bezwzględne ich pierwotnych wartości
+    for (int i = 0; i < n; i++) {
+        tab[i] = abs(tab[i]);
+    }
+}
+
+int main() {
+    int n = 5;
+    int tab[n];
+
+    // Wywołanie funkcji modifyArray
+    modifyArray(n, tab);
+
+    // Wyświetlenie zmodyfikowanej tablicy
+    printf("Zmodyfikowana tablica:\n");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", tab[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
+#include <stdio.h>
+
+double average(int n, int tab[]) {
+    double sum = 0.0;
+    for (int i = 0; i < n; i++) {
+        sum += tab[i];
+    }
+    return sum / n;
+}
+
+int sum(int n, int tab[]) {
+    int total = 0;
+    for (int i = 0; i < n; i++) {
+        total += tab[i];
+    }
+    return total;
+}
+
+int sumOfSquares(int n, int tab[]) {
+    int total = 0;
+    for (int i = 0; i < n; i++) {
+        total += tab[i] * tab[i];
+    }
+    return total;
+}
+
+int main() {
+    int n = 5;
+    int tab[] = {1, 2, 3, 4, 5};
+
+    // Obliczenie średniej arytmetycznej
+    double avg = average(n, tab);
+    printf("Średnia arytmetyczna: %.2f\n", avg);
+
+    // Obliczenie sumy elementów
+    int totalSum = sum(n, tab);
+    printf("Suma elementów: %d\n", totalSum);
+
+    // Obliczenie sumy kwadratów elementów
+    int totalSumOfSquares = sumOfSquares(n, tab);
+    printf("Suma kwadratów elementów: %d\n", totalSumOfSquares);
+
+    return 0;
+}
+
+
+
+
+
+
+#include <stdio.h>
+
+void sumArrays(int n, int tab1[], int tab2[], int tab3[]) {
+    for (int i = 0; i < n; i++) {
+        tab3[i] = tab1[i] + tab2[i];
+    }
+}
+
+void maxArrays(int n, int tab1[], int tab2[], int tab3[]) {
+    for (int i = 0; i < n; i++) {
+        tab3[i] = (tab1[i] > tab2[i]) ? tab1[i] : tab2[i];
+    }
+}
+
+void swapArrays(int n, int tab1[], int tab2[], int tab3[]) {
+    for (int i = 0; i < n; i++) {
+        int temp = tab1[i];
+        tab1[i] = tab2[i];
+        tab2[i] = tab3[i];
+        tab3[i] = temp;
+    }
+}
+
+int main() {
+    int n = 5;
+    int tab1[] = {1, 2, 3, 4, 5};
+    int tab2[] = {6, 7, 8, 9, 10};
+    int tab3[] = {11, 12, 13, 14, 15};
+
+    // a) Sumowanie elementów tablic tab1 i tab2 i przypisanie do tablicy tab3
+    sumArrays(n, tab1, tab2, tab3);
+
+    // Wyświetlenie tablicy tab3 po wykonaniu operacji sumowania
+    printf("Suma tab1 i tab2:\n");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", tab3[i]);
+    }
+    printf("\n");
+
+    // b) Przypisanie większych elementów z tablic tab1 i tab2 do tablicy tab3
+    maxArrays(n, tab1, tab2, tab3);
+
+    // Wyświetlenie tablicy tab3 po wykonaniu operacji przypisania większych elementów
+    printf("Większe elementy z tab1 i tab2:\n");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", tab3[i]);
+    }
+    printf("\n");
+
+    // c) Zamiana zawartości tablic tab1, tab2 i tab3
+    swapArrays(n, tab1, tab2, tab3);
+
+    // Wyświetlenie tablic tab1, tab2 i tab3 po wykonaniu operacji zamiany
+    printf("Zamiana zawartości tablic:\n");
+    printf("tab1: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", tab1[i]);
+    }
+    printf("\n");
+    printf("tab2: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", tab2[i]);
+    }
+    printf("\n");
+    printf("tab3: ");
+    for (int i = 0; i < n; i++) {
+        printf("%d ", tab3[i]);
+    }
+    printf("\n");
+
+    return 0;
+}
+
+
+
+#include <stdio.h>
+#include <math.h>
+
+double geometricMean(int n, unsigned int tab[]) {
+    unsigned long long product = 1; // Przechowuje iloczyn elementów tablicy
+    for (int i = 0; i < n; i++) {
+        product *= tab[i];
+    }
+    return pow(product, 1.0 / n); // Oblicza pierwiastek n-tego stopnia z iloczynu
+}
+
+int main() {
+    int n;
+    
+    // Wczytywanie liczby n
+    printf("Podaj dodatnią liczbę całkowitą n: ");
+    scanf("%d", &n);
+
+    if (n <= 0) {
+        printf("Liczba n musi być dodatnia!\n");
+        return 1; // Zakończenie programu z kodem błędu
+    }
+
+    unsigned int tab[n];
+    
+    // Wczytywanie elementów tablicy
+    printf("Podaj %d elementów tablicy:\n", n);
+    for (int i = 0; i < n; i++) {
+        scanf("%u", &tab[i]);
+    }
+
+    // Wywołanie funkcji geometricMean i wypisanie wyniku
+    double mean = geometricMean(n, tab);
+    printf("Średnia geometryczna elementów tablicy: %.6f\n", mean);
+    
+    return 0;
+}
+
+
+
+
